@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html leng="zh-cn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="renderer" content="webkit"> <!-- 360默认webkit渲染 -->
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" >
+  <meta name="Keywords" content="home">
+  <meta name="Description" content="home">
+  <title>home</title>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/product.css">
+</head>
+
+<body>
+<div id="wrapper">
+  <!-- 头部 -->
+  <header role="banner" id="header">
+      <h1 class="logo"><a href="index.html">发现好东西</a></h1>
+  </header>
+
+  <!-- 主体 -->
+  <main role="main" id="main">
+    <div id="content">
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic1.jpg" width="180" height="180" alt="猫咪">
+          </a>
+        </div>
+
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic2.jpg" height="180" width="320" alt="猫咪">
+          </a>
+        </div>
+
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic1.jpg" width="180" height="180" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic2.jpg" height="180" width="320" alt="猫咪">
+          </a>
+        </div>   
+          <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+         <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic1.jpg" width="180" height="180" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic2.jpg" height="180" width="320" alt="猫咪">
+          </a>
+        </div>   
+          <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+         <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic1.jpg" width="180" height="180" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic2.jpg" height="180" width="320" alt="猫咪">
+          </a>
+        </div>   
+          <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+        <div class="item">
+          <a class="itImg" href="detail.html">
+            <img src="images/pic3.jpg" height="180" width="280" alt="猫咪">
+          </a>
+        </div>
+  
+
+
+
+
+     
+
+ 
+
+
+
+
+
+        
+
+
+
+      
+
+
+     
+
+
+
+
+    </div>
+    <div id="paging">
+      <a href="#">上一页</a>
+      <a class="" href="#">1</a>
+      <a class="" href="#">2</a>
+      <a class="" href="#">3</a>
+      <a class="pgNext" href="data/data2.json">4</a>
+      <a href="#">下一页</a>
+    </div>
+    
+  </main>
+
+  <!-- 底部 -->
+  <footer role="contentinfo" id="footer">
+    by <a href="mailto:givenlovs@msn.com">WangPei</a>
+  </footer>
+</div>
+
+<!-- 遮罩层(正式用JS插入) -->
+<div id="shade"></div>
+<div id="loadDetail">
+  <a href="javascript:void(0)" class="ldClose">关闭</a>
+  <div class="loadContent"></div>
+</div>
+
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/jquery.myWF.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/jquery.infinitescroll.min.js"></script>
+  <script>
+  jQuery(function($){
+    var $container = $('#content');
+
+    //解析json
+    var _renderItem = function(data) {
+      return '<div class="item">'+
+              '<a class="itImg" href="detail.html">'+
+              '<img src="'+data.image+'" width="'+data.width+'" height="'+data.height+'" alt="'+data.title+'">'+
+              '</a>'+
+              '</div>'
+    };
+    //滚动加载
+    var ct = 1;
+    $container.infinitescroll({
+      navSelector   : "#paging",
+      nextSelector  : "#paging a.pgNext:last",
+      itemSelector  : "#content div.item",
+      dataType    : 'json',
+      appendCallback  : false, 
+      loadingText: "loading...",
+      //限制滚动次数
+      loading: {
+        finishedMsg: "没了",
+        finished: function(){
+          ct++;
+          if(ct>=4){
+            $("#paging").show();
+            $("#infscr-loading").hide(); 
+            $(window).unbind('.infscr');  
+          }
+          $("#infscr-loading").hide();
+        }, errorCallback:function(){
+          $("#paging").show();
+        }
+      }
+      //加载数据
+    }, function( newElements ) {
+      var jsonData = newElements.results;
+      for(var i=0; i<jsonData.length; i++) {
+          var item = $(_renderItem(jsonData[i]));
+          $container.append(item);
+          $container.myWF();
+      }
+    });
+
+
+
+      $container.myWF();
+
+     //检测浏览器是否支持html5 api pushState 不支持就直接打开链接
+      if (Modernizr.history){
+
+
+            $container.delegate("a.itImg", "click", function(){
+                $("#shade").show();
+                $("#loadDetail > .loadContent").load("detail.html #content").parents().show();
+                var state = { title: "home", url: "index.html"};
+                window.history.pushState(state, "detail", "detail.html");
+                //修复html5 api pushState title 未被支持
+                $(document).attr("title", "detail");
+                return false; 
+            });
+
+
+            $("#loadDetail").delegate("a.ldClose", "click", function(){
+                $("#shade").hide();
+                $(this).parent().hide();
+                 window.history.pushState({}, "home", "index.html");
+                 //修复html5 api pushState title 未被支持
+                 $(document).attr("title", "home");
+                return false; 
+            });
+
+         
+      }
+
+
+
+
+  });
+  </script>
+</body>
+</html>
